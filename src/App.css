@@ -12,6 +12,7 @@ body {
   height: 50px;
   width: 100%;
   background-color: #e85b04ee;
+  
   position: relative;
   z-index: 20;
 }
@@ -108,17 +109,25 @@ body {
 
 
 .directions-cont{
-
+  background-color: rgba(255, 140, 0, 0.371) ;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  
   text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
 
 }
 
 .directions-cont > div{ 
-  background-color: rgba(255, 140, 0, 0.371);
-  width: 100%;
+  /* background-color: rgba(255, 140, 0, 0.371); */
+  background-color: #e85b04ee;
+  color: white;
+  width: 382px;
   padding: 2%;
+  margin: 1px;
+  
 }
 
 .home-bg-img{
@@ -149,4 +158,40 @@ body {
 
 ::-webkit-scrollbar {
   width: 0%;
+}
+
+.footer-cont{
+  /* background-color: rgba(255, 140, 0, 0.371) ; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  /* text-align: center; */
+  justify-content: space-evenly;
+  /* align-items: center; */
+}
+
+.footer-cont > div {
+  /* background-color: #e85b04ee; */
+  /* color: white; */
+  width: 384px;
+  padding: 2%;
+  /* margin: 1px; */
+}
+
+.footer-link{
+  text-decoration: none;
+  color: black;
+}
+.footer-link:hover{
+  color:#e85b04ee ;
+}
+
+.footer-cont a{
+  text-decoration: none;
+  color: black;
+}
+.footer-cont a:hover{
+  color:#e85b04ee ;
+
 }
