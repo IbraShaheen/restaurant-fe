@@ -17,17 +17,21 @@ const Home = () => {
       </div>
       <div className="directions-cont">
         <div>
-          {" "}
+        
           <p> test1 </p> <h5> lordnfjkld nfmgk jkfgnjfk nfjk nbjfk</h5>
         </div>
         <div>
-          {" "}
+        
           <p> test2 </p> <h5> lordnfjkld nfmgk jkfgnjfk nfjk nbjfk</h5>
         </div>
         <div>
-          {" "}
+        
           <p> test3 </p> <h5> lordnfjkld nfmgk jkfgnjfk nfjk nbjfk</h5>
         </div>
+        <div>
+        
+        <p> test3 </p> <h5> lordnfjkld nfmgk jkfgnjfk nfjk nbjfk</h5>
+      </div>
       </div>
     </div>
   );
