@@ -20,8 +20,8 @@ const Footer = () => {
         
           <h4> Quick Links </h4> 
           <ul>
-          <li><Link className="footer-link">ABOUT US</Link></li>
-          <li><Link className="footer-link">GALLARY</Link></li> 
+          <li><Link to="/about" className="footer-link">ABOUT US</Link></li>
+          <li><Link to="/gallary" className="footer-link">GALLARY</Link></li> 
           <li><Link className="footer-link">RESERVATION</Link></li> 
          
 
@@ -38,10 +38,10 @@ const Footer = () => {
         <div>
         
         <h4> Follow Us  </h4>
-        <GrFacebook size={25} color="#1877f2"/> &nbsp;
-       <FaTwitterSquare size={30} color="#1DA1F2"/> &nbsp;
-       <FaInstagramSquare size={30} color="#c13584"/> &nbsp;
-       <SiYoutube color="red" size={35}/> 
+        <a href="https://www.facebook.com/" rel="noreferrer" target="_blank" ><GrFacebook size={25} color="#1877f2"/></a> &nbsp;
+       <a href="https://twitter.com/" rel="noreferrer" target="_blank"> <FaTwitterSquare size={30} color="#1DA1F2"/></a> &nbsp;
+      <a href="https://www.instagram.com/" rel="noreferrer" target="_blank" > <FaInstagramSquare size={30} color="#c13584"/></a> &nbsp;
+       <a href="https://www.youtube.com/" rel="noreferrer" target="_blank" > <SiYoutube color="red" size={35}/> </a> 
       </div>
       </div>
         </div>
