@@ -165,7 +165,8 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+background-color: #023047;
+color: white;
   /* text-align: center; */
   justify-content: space-evenly;
   /* align-items: center; */
@@ -176,12 +177,13 @@ body {
   /* color: white; */
   width: 384px;
   padding: 2%;
+  
   /* margin: 1px; */
 }
 
 .footer-link{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 .footer-link:hover{
   color:#e85b04ee ;
@@ -189,9 +191,66 @@ body {
 
 .footer-cont a{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 .footer-cont a:hover{
   color:#e85b04ee ;
 
+}
+
+.about-cont{
+  max-height: 670px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.about-text{
+  width: 40%;
+  height: 80%;
+ overflow-y: scroll;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.342);
+  z-index: 2;
+  padding: 2%;
+  text-align: justify;
+  font-weight: bold;
+  color: black;
+  text-shadow: 2px 2px 20px #e85b04ee;
+  border-radius: 30px 0 30px 0;
+}
+.about-text h3{
+ text-align: center;
+}
+.gallary-cont{
+  background-color: #e5e5e5;
+  width: 100%;
+  min-height:670px ;
+  max-height:670px ;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.gallary-image{
+  width: 40%;
+  height: 80%;
+  /* height: fit-content; */
+ overflow-y: scroll;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.342);
+  z-index: 2;
+  /* padding: 2%; */
+  
+  /* border-radius: 30px 0 30px 0; */
+}
+.image-g{
+  margin-bottom: 2.5%;
+  border-radius: 30px 0 30px 0;
 }
