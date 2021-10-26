@@ -221,6 +221,7 @@ color: white;
   color: black;
   text-shadow: 2px 2px 20px #e85b04ee;
   border-radius: 30px 0 30px 0;
+  /* font-size: 1vw; */
 }
 .about-text h3{
  text-align: center;
@@ -253,4 +254,16 @@ color: white;
 .image-g{
   margin-bottom: 2.5%;
   border-radius: 30px 0 30px 0;
+}
+
+.img-show {
+width: 100%;
+height: 90% ;
+z-index: 20;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+
+
 }
