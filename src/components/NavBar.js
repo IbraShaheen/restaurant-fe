@@ -27,7 +27,7 @@ const NavBar = () => {
       <Link to="">RESERVATION</Link>
       <Link to="">ARABIC</Link>
 
-      <Link to="/signup" >Login</Link>
+      <Link to="/signin" >Login</Link>
 
     </div>
   </div>

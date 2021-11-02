@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import images from "../imageData";
 
-// import { FaWindowClose } from "@react-icons/all-files/fa/FaWindowClose";
+
 import { RiCloseLine } from "@react-icons/all-files/ri/RiCloseLine";
+import { BiImageAdd } from "@react-icons/all-files/bi/BiImageAdd";
+
+
+
+
 
 
 
 const Gallary = () => {
   const [show, setShow] = useState(false);
   const [pic, setPic] = useState();
+
+  const [addForm, setAddForm] = useState()
 
   const imageList = () =>
     images.map((image) => (
@@ -22,7 +29,14 @@ const Gallary = () => {
   };
 
   return (
+    <>
+    <center style={{backgroundColor:"#e5e5e5"}}>
+    <p style={{display:"inline", fontWeight:"bold", fontSize:"1.7em"}}> Gallary </p>
+    <BiImageAdd size={35} color="orange" onClick={()=>{} }/>
+    </center>
+
     <div className="gallary-cont">
+      
       {!show && (
         <div className="gallary-image" onClick={(event) => handlePic(event)}>
           {imageList()}
@@ -45,6 +59,7 @@ const Gallary = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
