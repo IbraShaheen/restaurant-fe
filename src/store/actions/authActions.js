@@ -18,12 +18,11 @@ export const signup = (userData, history) => {
 
 
 
-export const signin = (userData, history) => {
+export const signin = (userData) => {
     return async (dispatch) => {
       try {
         const res = await instance.post("/signin", userData);
         dispatch(setUser(res.data.token));
-        history.push("/");
       } catch (error) {
         console.log(error.message);
       }
@@ -31,8 +30,7 @@ export const signin = (userData, history) => {
   };
 
   //history as prop from Nav Bar
-  export const signout = (history) =>{
-      history.push("/");
+  export const signout = () =>{
       return setUser()
     }
 

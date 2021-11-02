@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import About from "../About";
-import Signup from "../Authentication/Signup";
+import SigninSignup from "../Authentication/SigninSignup";
 import Contact from "../Contact";
 import Gallary from "../Gallary";
 import Home from "../Home";
@@ -19,8 +19,8 @@ const Routes = () => {
         <Route path="/gallary">
           <Gallary/>
           </Route>
-          <Route path="/signup">
-            <Signup/>
+          <Route path="/signin">
+            <SigninSignup/>
           </Route>
         <Route path="/">
           <Home />
