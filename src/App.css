@@ -456,3 +456,21 @@ a {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.image-form{
+  width:65%;
+  max-width:350px;
+  /* background-color:red; */
+ padding: 1.5%;
+  background-color: #023047;
+  color: white;
+  border:5px double orange ;
+  border-radius: 15px 0px 15px 0px;
+  box-shadow: 5px 5px 25px orange;
+}
+
+.image-form button{
+  width: 140px;
+  margin: 1%;
+  font-weight: bold;
+}

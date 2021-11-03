@@ -35,7 +35,7 @@ const [userUp, setUserUp] = useState(
 
   const handleChangeUp = (event) => {
     setUserUp({...userUp,[event.target.name]:event.target.value})
-    console.log(userUp)
+    
    }
 
   const handleSignUp = (event) => {
