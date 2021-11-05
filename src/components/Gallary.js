@@ -38,7 +38,9 @@ const Gallary = () => {
            
             style={{ position: "absolute", right: "3px" }}
           >
-            <MdDelete style={{zIndex:"20"}} color="orange" size={30} onClick={()=>handleDelete(image.id)} />
+            <abbr title="remove this image">
+            <MdDelete style={{zIndex:"20"}} color="orange" size={30} cursor="pointer" onClick={()=>handleDelete(image.id)}  />
+           </abbr>
           </div>
         )}
         <img
@@ -70,15 +72,18 @@ const Gallary = () => {
     <center>
       <center style={{ backgroundColor: "#e5e5e5" }}>
         <p style={{ display: "inline", fontWeight: "bold", fontSize: "1.7em" }}>
-          {" "}
-          Gallary{" "}
+
+          Gallary
         </p>
         {user.isAdmin && (
+          <abbr title="add a new image">
           <BiImageAdd
             size={35}
             color="orange"
             onClick={() => setAddForm(true)}
+            cursor="pointer"
           />
+          </abbr>
         )}
       </center>
        

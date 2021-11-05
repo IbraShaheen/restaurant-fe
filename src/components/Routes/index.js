@@ -5,6 +5,7 @@ import SigninSignup from "../Authentication/SigninSignup";
 import Contact from "../Contact";
 import Gallary from "../Gallary";
 import Home from "../Home";
+import MenuList from "../Menu/MenuList";
 
 const Routes = () => {
   return (
@@ -13,15 +14,18 @@ const Routes = () => {
         <Route path="/contact">
           <Contact/>
         </Route>
-        <Route path="/about">
-          <About/>
-        </Route>
         <Route path="/gallary">
           <Gallary/>
           </Route>
           <Route path="/signin">
             <SigninSignup/>
           </Route>
+        <Route path="/about">
+          <About/>
+        </Route>
+        <Route path="/menu">
+          <MenuList/>
+        </Route>
         <Route path="/">
           <Home />
         </Route>
