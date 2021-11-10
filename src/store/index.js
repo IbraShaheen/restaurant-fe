@@ -4,6 +4,7 @@ import rootReducer from "./reducers/rootReducer";
 import { checkForToken } from "./actions/authActions";
 import { fetchImages } from "./actions/gallaryActions";
 import { fetchCategories } from "./actions/categoryActions";
+import { fetchDishes } from "./actions/dishActions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
@@ -17,5 +18,6 @@ store.dispatch(checkForToken());
 
 store.dispatch(fetchImages())
 store.dispatch(fetchCategories())
+store.dispatch(fetchDishes())
 
 export default store;
