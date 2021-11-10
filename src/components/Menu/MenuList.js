@@ -8,25 +8,36 @@ import {
   addCategory,
   deleteCategory,
 } from "../../store/actions/categoryActions";
+import DishesList from "./DishesList";
 
 const MenuList = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState();
+  const [showList, setShowList]=useState(false)
+  const [catInfo,setCatInfo]=useState()
 
   const categories = useSelector((state) => state.categories.categories);
 
+  const handleShowList=(cat)=>{
+    setShowList(true)
+    setCatInfo(cat)
+
+  }
   const categoriesList = categories.map((cat) => (
     <div style={{ minWidth: "33.33%", textAlign: "center" }}>
+      { cat.dishes.length===0 &&
       <MdRemoveCircleOutline
         size={22}
         cursor="pointer"
         onClick={() => dispatch(deleteCategory(cat.id))}
       />
+    }
       &nbsp;
-      {cat.name}
+     <span onClick={()=>handleShowList(cat)}> {cat.name}</span>
     </div>
   ));
+
 
   const handleCategory = (event) => {
     setCategory({ [event.target.name]: event.target.value });
@@ -53,6 +64,7 @@ const MenuList = () => {
       </center>
 
       {!show && (
+        <>
         <div
           style={{
             display: "flex",
@@ -68,7 +80,12 @@ const MenuList = () => {
           {categoriesList}
           <br />
         </div>
+        { showList&&
+        <DishesList catInfo={catInfo}/>
+        }
+        </>
       )}
+
 
       {show && (
         <center className="category-form">
