@@ -3,13 +3,15 @@ import authReducer from "./authReducer";
 import categoryReducer from "./categoryReducer";
 import dishReducer from "./dishReducer";
 import gallaryReducer from "./gallaryReducer";
+import reservationReducer from "./reservationReducer";
 
 
 const rootReducer = combineReducers({
    user: authReducer,
    images: gallaryReducer,
    categories: categoryReducer,
-   dishes: dishReducer
+   dishes: dishReducer,
+   reservations : reservationReducer
   })
 
   export default rootReducer;

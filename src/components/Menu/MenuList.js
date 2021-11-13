@@ -9,6 +9,7 @@ import {
   deleteCategory,
 } from "../../store/actions/categoryActions";
 import DishesList from "./DishesList";
+import { Spinner } from "react-bootstrap";
 
 const MenuList = () => {
   const dispatch = useDispatch();
@@ -18,21 +19,31 @@ const MenuList = () => {
   const [catInfo,setCatInfo]=useState()
 
   const categories = useSelector((state) => state.categories.categories);
+  const categoriesLoading = useSelector((state) => state.categories.loading);
+
+  console.log(categories,categoriesLoading);
 
   const handleShowList=(cat)=>{
     setShowList(true)
     setCatInfo(cat)
 
   }
+  if(categoriesLoading) return <Spinner/>
   const categoriesList = categories.map((cat) => (
     <div style={{ minWidth: "33.33%", textAlign: "center" }}>
-      { cat.dishes.length===0 &&
+
+      {cat.dishes ? cat.dishes.length===0 &&
       <MdRemoveCircleOutline
         size={22}
         cursor="pointer"
         onClick={() => dispatch(deleteCategory(cat.id))}
       />
-    }
+    :
+    <MdRemoveCircleOutline
+    size={22}
+    cursor="pointer"
+    onClick={() => dispatch(deleteCategory(cat.id))}
+  />}
       &nbsp;
      <span onClick={()=>handleShowList(cat)}> {cat.name}</span>
     </div>

@@ -9,7 +9,7 @@ export const signup = (userData, history) => {
       try {
         const res = await instance.post("/signup", userData);
         dispatch(setUser(res.data.token));
-        history.push("/");
+        // history.push("/");
       } catch (error) {
         console.log(error.message);
       }
