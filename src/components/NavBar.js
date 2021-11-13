@@ -1,7 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { signout } from "../store/actions/authActions";
 
 const NavBar = () => {
+
+  const user = useSelector(state => state.user.user)
+  const dispatch = useDispatch()
   return (
     <div className="nav">
     <input type="checkbox" id="nav-check"/>
@@ -24,10 +29,10 @@ const NavBar = () => {
       <Link to="/menu">MENU</Link>
       <Link to="/gallary">GALLARY</Link>
       <Link to="/contact">CONTACT US</Link>
-      <Link to="">RESERVATION</Link>
+      <Link to="/reservation">RESERVATION</Link>
       <Link to="">ARABIC</Link>
 
-      <Link to="/signin" >Login</Link>
+      {user ?<Link to="/" onClick={()=> dispatch(signout())} >Signout</Link>:<Link to="/signin" >Login</Link>}
 
     </div>
   </div>

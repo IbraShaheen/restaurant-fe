@@ -6,11 +6,17 @@ import Contact from "../Contact";
 import Gallary from "../Gallary";
 import Home from "../Home";
 import MenuList from "../Menu/MenuList";
+import Reservation from "../Reservation";
 
 const Routes = () => {
   return (
     <div>
+      
       <Switch>
+
+      <Route path="/reservation">
+          <Reservation/>
+        </Route>
         <Route path="/contact">
           <Contact/>
         </Route>

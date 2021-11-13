@@ -16,10 +16,11 @@ const DishesList = ({ catInfo }) => {
   const [show, setShow] = useState(false);
   const [editForm, setEditForm]=useState(false)
   const [dishInfo,setDishInfo]=useState()
+
   const [dish, setDish] = useState({
     name: "",
-    image: "",
     price: "",
+    image: "https://i.ibb.co/D1b8WgJ/dishLogo.png",
   });
 
   const dishesList = dishes

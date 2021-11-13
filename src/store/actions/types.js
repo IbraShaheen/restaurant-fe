@@ -16,3 +16,7 @@ export const ADD_DISH="ADD_DISH";
 export const FETCH_DISHES="FETCH_DISHES";
 export const DELETE_DISH="DELETE_DISH";
 export const EDIT_DISH="EDIT_DISH";
+
+//Reservations
+export const ADD_RESERVATION="ADD_RESERVATION";
+
