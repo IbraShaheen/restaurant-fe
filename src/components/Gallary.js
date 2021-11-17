@@ -75,7 +75,7 @@ const Gallary = () => {
 
           Gallary
         </p>
-        {user.isAdmin && (
+        { user && user.isAdmin && (
           <abbr title="add a new image">
           <BiImageAdd
             size={35}

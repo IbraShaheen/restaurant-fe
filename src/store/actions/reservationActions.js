@@ -1,5 +1,5 @@
 import instance from "./instance";
-import { ADD_RESERVATION } from "./types";
+import { ADD_RESERVATION, FETCH_RESERVATIONS } from "./types";
 
 
 export const addReservation = (newReservation) => {
@@ -17,3 +17,17 @@ export const addReservation = (newReservation) => {
     }
   };
 };
+
+export const fetchReservations = ()=>{
+  return async(dispatch)=>{
+    try {
+      const res = await instance.get("/reservations")
+      dispatch({
+        type:FETCH_RESERVATIONS,
+        payload: res.data
+      })
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+}
