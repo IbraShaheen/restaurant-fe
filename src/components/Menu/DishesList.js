@@ -9,7 +9,7 @@ import { MdDeleteSweep } from "@react-icons/all-files/md/MdDeleteSweep";
 import {GrFormEdit} from "@react-icons/all-files/gr/GrFormEdit"
 import DishEdit from "./DishEdit";
 
-const DishesList = ({ catInfo }) => {
+const DishesList = ({ catInfo,user }) => {
   console.log(catInfo)
   const dispatch = useDispatch();
   const dishes = useSelector((state) => state.dishes.dishes);
@@ -33,12 +33,17 @@ const DishesList = ({ catInfo }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body cont-icon">
+              { user&& user.isAdmin&&
+              <>
               <MdDeleteSweep
                 className="delete-dish-icon"
                 size={25}
                 onClick={() => dispatch(deleteDish(dish.id))}
               />
+
               <GrFormEdit size={25} className="edit-dish-icon" onClick={()=>handleEdit(dish)} />
+              </>
+              }
               <h5 className="card-title">{dish.name}</h5>
               <p className="card-text"> JOD {dish.price}</p>
             </div>
@@ -68,13 +73,14 @@ const handleEdit=(dishInfo)=>{
     <>
       {!show && (
         <div>
+          {user&& user.isAdmin&&
           <MdAddCircle
             size={30}
             color="orange"
             cursor="pointer"
             onClick={() => setShow(true)}
           />
-
+          }
           {dishesList}
         </div>
       )}

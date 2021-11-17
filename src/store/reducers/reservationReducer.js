@@ -1,4 +1,4 @@
-import { ADD_RESERVATION } from "../actions/types";
+import { ADD_RESERVATION, FETCH_RESERVATIONS } from "../actions/types";
 
 const initialState = {
   reservations: [],
@@ -11,7 +11,11 @@ const reservationReducer = (state = initialState, action) => {
         ...state,
         reservations: [...state.reservations, action.payload],
       };
-
+      case FETCH_RESERVATIONS:
+        return {
+          ...state,
+          reservations: action.payload
+        }
     default:
       return state;
   }

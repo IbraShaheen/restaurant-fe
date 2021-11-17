@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { FcPhoneAndroid } from "@react-icons/all-files/fc/FcPhoneAndroid";
@@ -43,28 +43,40 @@ const timeOptions = [
 
 
 const Reservation = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
   const user = useSelector(state => state.user.user)
-    console.log(user)
-
-  const today = new Date().toISOString().split("T")[0];
-  const [reservation, setReservation] = useState({
-    name:user.username ,
-    email:user.email ,
-    phone:user.phone ,
-    groupSize:"",
-    date:today,
-    time:timeOptions[0],
-    type:"Families",
-    notes:""
-  })
-
-
-  const handleSubmit = (event) => {
+   // console.log(user)
+    const reservations = useSelector(state=>state.reservations.reservations)
+    //console.log(reservations)
+    const userReservations =user? reservations.filter((res)=>res.userId=== user.id):[]
+ //   console.log(userReservations)
+    const dispatch = useDispatch()
+    const history = useHistory()
+    
+    const today = new Date().toISOString().split("T")[0];
+    const days= +new Date().toISOString().slice(8,10)+14
+    const maxDate = new Date().toISOString().slice(0,8)+days
+    const [reservation, setReservation] = useState({
+      name:user?user.username:"" ,
+      // name:user.username&&"",
+      email:user?user.email:"" ,
+      phone:user? user.phone:"" ,
+      groupSize:"",
+      date:today,
+      time:timeOptions[0],
+      type:"Families",
+      notes:""
+    })
+   
+    const todayRes= reservations.filter(tRes=>tRes.date===reservation.date&& tRes.time===reservation.time)
+    console.log(todayRes)
+    // useEffect(() => {
+    // setReservation({...reservation})
+    //  console.log("HIIIIIII")
+    // }, [false])    
+    const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(addReservation(reservation))
-
+    history.push("/")
   };
 
 
@@ -72,7 +84,7 @@ const Reservation = () => {
     setReservation({...reservation,[event.target.name]: event.target.value })
   }
 
-  console.log("res", reservation);
+  //console.log("res", reservation);
 
 
  
@@ -154,6 +166,7 @@ const Reservation = () => {
                   name="date"
                   defaultValue={today}
                   min={today}
+                  max={maxDate}
                   required
                 onChange={handleChange}
 
@@ -219,9 +232,21 @@ const Reservation = () => {
 
             <center>
               <div className="col-8 pt-3 mx-auto">
+                {userReservations.some(res=>res.date===reservation.date)?
+                <>
+                <button disabled className=" col-8 btn btn-danger">
+                  <b>You already have a reservation in {reservation.date}</b>
+                </button>
+                </>
+                :todayRes.length===15?
+                <button disabled className=" col-8 btn btn-warning">
+                <b>fully reserved at {reservation.time}</b>
+              </button>
+                :
                 <button type="submit" className=" col-4 btn btn-dark">
                   <b>SEND</b>
                 </button>
+                }
               </div>
             </center>
           </div>

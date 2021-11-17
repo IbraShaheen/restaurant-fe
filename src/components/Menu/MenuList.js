@@ -20,6 +20,7 @@ const MenuList = () => {
 
   const categories = useSelector((state) => state.categories.categories);
   const categoriesLoading = useSelector((state) => state.categories.loading);
+  const user = useSelector((state) => state.user.user);
 
   console.log(categories,categoriesLoading);
 
@@ -66,12 +67,14 @@ const MenuList = () => {
         <p style={{ fontWeight: "bold", fontSize: "1.7em", display: "inline" }}>
           Menu List
         </p>
+        { user && user.isAdmin &&
         <MdAddCircle
           size={30}
           color="orange"
           cursor="pointer"
           onClick={() => setShow(true)}
         />
+        }
       </center>
 
       {!show && (
@@ -92,7 +95,7 @@ const MenuList = () => {
           <br />
         </div>
         { showList&&
-        <DishesList catInfo={catInfo}/>
+        <DishesList catInfo={catInfo} user={user}/>
         }
         </>
       )}

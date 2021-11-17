@@ -19,4 +19,5 @@ export const EDIT_DISH="EDIT_DISH";
 
 //Reservations
 export const ADD_RESERVATION="ADD_RESERVATION";
+export const FETCH_RESERVATIONS="FETCH_RESERVATIONS";
 
