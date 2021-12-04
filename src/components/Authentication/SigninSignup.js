@@ -27,8 +27,8 @@ const [userUp, setUserUp] = useState(
 
   const handleSignin = (event) => {
     event.preventDefault()
-    dispatch(signin(userIn))
-    history.goBack()
+    dispatch(signin(userIn,history))
+    // history.goBack()
   }
  
 
