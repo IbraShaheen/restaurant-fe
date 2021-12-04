@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="about-cont">
       <div className="about-text">
-        <h3>Restaurant Name</h3>
+        <h2>Restaurant Name</h2>
         <p>
           From the fresh flavors of Jordan and the Middle East, Pine offers you
           a unique experience where exceptional cuisine meets unrivaled views.

@@ -33,23 +33,29 @@ const Gallary = () => {
   const imageList = () =>
     images.map((image) => (
       <>
-        {user.isAdmin && (
-          <div
-           
-            style={{ position: "absolute", right: "3px" }}
-          >
-            <abbr title="remove this image">
-            <MdDelete style={{zIndex:"20"}} color="orange" size={30} cursor="pointer" onClick={()=>handleDelete(image.id)}  />
-           </abbr>
-          </div>
-        )}
+          <div className="img-box">
+
         <img
           className="image-g"
           src={image.image}
           alt=""
           width="100%"
           height="auto"
-        />
+          onClick={(event) => handlePic(event)}
+          />
+          
+          {user&& user.isAdmin && (
+            <div
+             
+              style={{ position: "relative", right: "-45%",top:"-100%" }}
+            >
+              <abbr title="remove this image">
+              <MdDelete style={{zIndex:"50"}} color="orange" size={30} cursor="pointer" onClick={()=>handleDelete(image.id)}  />
+             </abbr>
+            </div>
+          )}
+        
+          </div>
       </>
     ));
 
@@ -87,11 +93,12 @@ const Gallary = () => {
         )}
       </center>
        
-      <div className="gallary-cont">
+      <div className="gallery-image">
         {!show && !addForm && (
-          <div className="gallary-image" onClick={(event) => handlePic(event)}>
-            {imageList()}
-          </div>
+         
+            imageList()
+           
+         
           
         )}
         

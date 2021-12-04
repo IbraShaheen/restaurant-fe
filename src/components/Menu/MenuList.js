@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { MdAddCircle } from "@react-icons/all-files/md/MdAddCircle";
+
 import { MdRemoveCircleOutline } from "@react-icons/all-files/md/MdRemoveCircleOutline";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -31,22 +31,21 @@ const MenuList = () => {
   }
   if(categoriesLoading) return <Spinner/>
   const categoriesList = categories.map((cat) => (
-    <div style={{ minWidth: "33.33%", textAlign: "center" }}>
+    <div className="cat-item btn">
 
-      {cat.dishes ? cat.dishes.length===0 &&
+      {user && user.isAdmin && cat.dishes && cat.dishes.length===0 && 
+      <abbr title="Remove This Category">
       <MdRemoveCircleOutline
         size={22}
         cursor="pointer"
         onClick={() => dispatch(deleteCategory(cat.id))}
-      />
-    :
-    <MdRemoveCircleOutline
-    size={22}
-    cursor="pointer"
-    onClick={() => dispatch(deleteCategory(cat.id))}
-  />}
+        color="red"
+        />
+        </abbr>
+    
+    }
       &nbsp;
-     <span onClick={()=>handleShowList(cat)}> {cat.name}</span>
+     <button className="cat-btn btn btn-outline-dark" style={{cursor:"pointer"}} onClick={()=>handleShowList(cat)}> {cat.name}</button>
     </div>
   ));
 
@@ -62,18 +61,21 @@ const MenuList = () => {
   };
 
   return (
-    <center style={{ height: "670px" }}>
+    <center style={{ height: "670px",background:"linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)" }}>
       <center>
-        <p style={{ fontWeight: "bold", fontSize: "1.7em", display: "inline" }}>
+        {/* <p style={{ fontWeight: "bold", fontSize: "1.7em", display: "inline" }}>
           Menu List
-        </p>
+        </p> */}
         { user && user.isAdmin &&
-        <MdAddCircle
-          size={30}
-          color="orange"
-          cursor="pointer"
-          onClick={() => setShow(true)}
-        />
+        // <MdAddCircle
+        //   size={30}
+        //   color="orange"
+        //   cursor="pointer"
+        //   onClick={() => setShow(true)}
+        // />
+        <button className="btn btn-success"  onClick={() => setShow(true)} style={{fontWeight:"bold",textTransform:"uppercase",margin:"15px 0px"}} >
+            Add Category
+        </button>
         }
       </center>
 
@@ -81,19 +83,22 @@ const MenuList = () => {
         <>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            backgroundColor: "tomato",
-            width: "60%",
-            margin: "auto",
+            // display: "flex",
+            // flexDirection: "row",
+            // flexWrap: "wrap",
+            // justifyContent: "space-evenly",
+            // alignItems: "center",
+            // fontWeight:"bold",
+         
+            // width: "60%",
+            // margin: "auto",
+            paddingTop: user && user.isAdmin?"0px":"38px"
           }}
         >
           {categoriesList}
           <br />
         </div>
+          <hr style={{width:"35%"}} />
         { showList&&
         <DishesList catInfo={catInfo} user={user}/>
         }

@@ -3,19 +3,19 @@ import { addDish, deleteDish } from "../../store/actions/dishActions";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
-import { MdAddCircle } from "@react-icons/all-files/md/MdAddCircle";
+
 import { MdDeleteSweep } from "@react-icons/all-files/md/MdDeleteSweep";
 // import {MdEdit} from "@react-icons/all-files/md/MdEdit"
-import {GrFormEdit} from "@react-icons/all-files/gr/GrFormEdit"
+import { GrFormEdit } from "@react-icons/all-files/gr/GrFormEdit";
 import DishEdit from "./DishEdit";
 
-const DishesList = ({ catInfo,user }) => {
-  console.log(catInfo)
+const DishesList = ({ catInfo, user }) => {
+  console.log(catInfo);
   const dispatch = useDispatch();
   const dishes = useSelector((state) => state.dishes.dishes);
   const [show, setShow] = useState(false);
-  const [editForm, setEditForm]=useState(false)
-  const [dishInfo,setDishInfo]=useState()
+  const [editForm, setEditForm] = useState(false);
+  const [dishInfo, setDishInfo] = useState();
 
   const [dish, setDish] = useState({
     name: "",
@@ -33,17 +33,29 @@ const DishesList = ({ catInfo,user }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body cont-icon">
-              { user&& user.isAdmin&&
-              <>
-              <MdDeleteSweep
-                className="delete-dish-icon"
-                size={25}
-                onClick={() => dispatch(deleteDish(dish.id))}
-              />
+              {user && user.isAdmin && (
+                <>
+                  <abbr title="Remove This Dish">
+                    <MdDeleteSweep
+                      className="delete-dish-icon"
+                      size={25}
+                      onClick={() => dispatch(deleteDish(dish.id))}
+                      cursor="pointer"
+                      color="red"
+                    />
+                  </abbr>
 
-              <GrFormEdit size={25} className="edit-dish-icon" onClick={()=>handleEdit(dish)} />
-              </>
-              }
+                  <abbr title="Edit This Dish">
+                  <GrFormEdit
+                    color="#e85b04ee"
+                    size={25}
+                    className="edit-dish-icon"
+                    onClick={() => handleEdit(dish)}
+                    cursor="pointer"
+                    />
+                    </abbr>
+                </>
+              )}
               <h5 className="card-title">{dish.name}</h5>
               <p className="card-text"> JOD {dish.price}</p>
             </div>
@@ -51,10 +63,10 @@ const DishesList = ({ catInfo,user }) => {
         </div>
       </div>
     ));
-const handleEdit=(dishInfo)=>{
-  setEditForm(true);
-  setDishInfo(dishInfo)
-}
+  const handleEdit = (dishInfo) => {
+    setEditForm(true);
+    setDishInfo(dishInfo);
+  };
   const handleChange = (event) => {
     setDish({ ...dish, [event.target.name]: event.target.value });
   };
@@ -72,17 +84,33 @@ const handleEdit=(dishInfo)=>{
   return (
     <>
       {!show && (
-        <div>
-          {user&& user.isAdmin&&
-          <MdAddCircle
-            size={30}
-            color="orange"
-            cursor="pointer"
-            onClick={() => setShow(true)}
-          />
-          }
-          {dishesList}
-        </div>
+        <>
+          {user && user.isAdmin && (
+            // <MdAddCircle
+            //   size={30}
+            //   color="orange"
+            //   cursor="pointer"
+            //   onClick={() => setShow(true)}
+            // />
+            <button
+              className="btn btn-success"
+              onClick={() => setShow(true)}
+              style={{
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                margin: "15px 0px",
+              }}
+            >
+              Add Dish
+            </button>
+          )}
+          <div className="dishes-cont"
+           style={{
+             marginTop: user&&user.isAdmin?"0px":"70px"
+           }} >
+            {dishesList}
+            </div>
+        </>
       )}
       {show && (
         <center className="category-form">
@@ -127,9 +155,9 @@ const handleEdit=(dishInfo)=>{
           </form>
         </center>
       )}
-      { editForm && 
-        <DishEdit dishInfo={dishInfo} open={editForm} setOpen={setEditForm}/>
-      }
+      {editForm && (
+        <DishEdit dishInfo={dishInfo} open={editForm} setOpen={setEditForm} />
+      )}
     </>
   );
 };

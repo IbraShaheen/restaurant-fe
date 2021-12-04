@@ -18,11 +18,12 @@ export const signup = (userData, history) => {
 
 
 
-export const signin = (userData) => {
+export const signin = (userData,history) => {
     return async (dispatch) => {
       try {
         const res = await instance.post("/signin", userData);
         dispatch(setUser(res.data.token));
+        history.goBack()
       } catch (error) {
         console.log(error.message);
       }
