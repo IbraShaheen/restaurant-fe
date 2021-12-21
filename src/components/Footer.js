@@ -22,7 +22,7 @@ const Footer = () => {
           <ul>
           <li><Link to="/about" className="footer-link">ABOUT US</Link></li>
           <li><Link to="/gallary" className="footer-link">GALLARY</Link></li> 
-          <li><Link className="footer-link">RESERVATION</Link></li> 
+          <li><Link to="/reservation" className="footer-link">RESERVATION</Link></li>
          
 
           </ul>

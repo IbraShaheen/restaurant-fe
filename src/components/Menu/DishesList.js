@@ -78,20 +78,21 @@ const DishesList = ({ catInfo, user }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addDish(dish, catInfo.id));
-    setShow(false);
+    setShow(false)
+    setDish({
+      name: "",
+      price: "",
+      image: "https://i.ibb.co/D1b8WgJ/dishLogo.png",
+    })
   };
-  console.log(dish);
+  console.log(catInfo);
   return (
     <>
       {!show && (
         <>
+        <h4>{catInfo.name}</h4>
           {user && user.isAdmin && (
-            // <MdAddCircle
-            //   size={30}
-            //   color="orange"
-            //   cursor="pointer"
-            //   onClick={() => setShow(true)}
-            // />
+
             <button
               className="btn btn-success"
               onClick={() => setShow(true)}
