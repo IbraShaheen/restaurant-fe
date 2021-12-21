@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 import { FcPhoneAndroid } from "@react-icons/all-files/fc/FcPhoneAndroid";

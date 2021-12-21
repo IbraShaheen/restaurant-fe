@@ -8,7 +8,7 @@ body {
 }
 
 .nav {
-  height: 50px;
+  height: 55px;
   width: 100%;
   background-color: #e85b04ee;
 
@@ -35,16 +35,25 @@ body {
 }
 
 .nav > .nav-links {
-  display: inline;
-  float: right;
-  font-size: 18px;
+  width:87%;
+  
+
+  /* display: inline;
+  float:left;
+  font-size: 18px; */
+
+  display: flex;
+  justify-content:end;
+  font-size: 17px;
 }
 
 .nav > .nav-links > a {
   display: inline-block;
-  padding: 13px 10px 13px 10px;
+  padding: 13px 25px 13px 25px;
   text-decoration: none;
+  /* font-weight: bold; */
   color: #efefef;
+  min-width: fit-content;
 }
 
 .nav > .nav-links > a:hover {
@@ -55,7 +64,26 @@ body {
   display: none;
 }
 
-@media (max-width: 600px) {
+.card-text {
+  color: #f69d3c;
+}
+
+@media (min-width: 770px) {
+
+  .card-img{
+    height: 150px
+  }
+
+}
+
+
+@media (max-width: 653px) {
+
+  .btn-sm{
+    background-color: #e85b04ee !important;
+    margin: auto;
+    margin-top: 10px !important;
+  }
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -65,8 +93,8 @@ body {
   .nav > .nav-btn > label {
     display: inline-block;
     width: 50px;
-    height: 50px;
-    padding: 13px;
+    height: 55px;
+    padding: 15px 13px;
   }
   .nav > .nav-btn > label:hover,
   .nav #nav-check:checked ~ .nav-btn > label {
@@ -76,18 +104,20 @@ body {
     display: block;
     width: 25px;
     height: 10px;
-    border-top: 2px solid #eee;
+    border-top: 3px solid #eee;
   }
   .nav > .nav-links {
     position: absolute;
     display: block;
     width: 100%;
-    background-color: #333;
-    height: 0px;
+    background-color: black;
+    max-height: 350px ;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
-    top: 50px;
+    top: 55px;
     left: 0px;
+    text-align: center;
+    padding-top: 0px;
   }
   .nav > .nav-links > a {
     display: block;
@@ -100,6 +130,19 @@ body {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
+  
+  /* .nav > .nav-links > a:active ~ a{
+    color: palegreen !important ;
+    background-color: red !important;
+  } */
+
+  
+
+  .nav-links:active {
+    height: 0px !important;
+    background-color: red;
+  } 
+
 }
 
 /* // */
@@ -672,7 +715,7 @@ div#slider figure {
 /*********************************************/
 
 .cat-item{
-  min-width: 24.33%;
+  min-width: 18%;
    text-align: center;
    
 }

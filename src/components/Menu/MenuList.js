@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 import { MdRemoveCircleOutline } from "@react-icons/all-files/md/MdRemoveCircleOutline";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -15,40 +14,45 @@ const MenuList = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [category, setCategory] = useState();
-  const [showList, setShowList]=useState(false)
-  const [catInfo,setCatInfo]=useState()
+  const [showList, setShowList] = useState(false);
+  const [catInfo, setCatInfo] = useState();
 
   const categories = useSelector((state) => state.categories.categories);
   const categoriesLoading = useSelector((state) => state.categories.loading);
   const user = useSelector((state) => state.user.user);
 
-  console.log(categories,categoriesLoading);
+  console.log("test", categories);
 
-  const handleShowList=(cat)=>{
-    setShowList(true)
-    setCatInfo(cat)
-
-  }
-  if(categoriesLoading) return <Spinner/>
+  const handleShowList = (cat) => {
+    setShowList(true);
+    setCatInfo(cat);
+  };
+  if (categoriesLoading) return <Spinner />;
   const categoriesList = categories.map((cat) => (
     <div className="cat-item btn">
-
-      {user && user.isAdmin && cat.dishes && cat.dishes.length===0 && 
-      <abbr title="Remove This Category">
-      <MdRemoveCircleOutline
-        size={22}
-        cursor="pointer"
-        onClick={() => dispatch(deleteCategory(cat.id))}
-        color="red"
-        />
-        </abbr>
-    
-    }
+      {user &&
+        user.isAdmin &&
+        ((cat.dishes && cat.dishes.length === 0) || !cat.dishes) && (
+          <abbr title="Remove This Category">
+            <MdRemoveCircleOutline
+              size={22}
+              cursor="pointer"
+              onClick={() => dispatch(deleteCategory(cat.id))}
+              color="red"
+            />
+          </abbr>
+        )}
       &nbsp;
-     <button className="cat-btn btn btn-outline-dark" style={{cursor:"pointer"}} onClick={()=>handleShowList(cat)}> {cat.name}</button>
+      <button
+        className="cat-btn btn btn-outline-dark"
+        style={{ cursor: "pointer" }}
+        onClick={() => handleShowList(cat)}
+      >
+        {" "}
+        {cat.name}
+      </button>
     </div>
   ));
-
 
   const handleCategory = (event) => {
     setCategory({ [event.target.name]: event.target.value });
@@ -61,50 +65,44 @@ const MenuList = () => {
   };
 
   return (
-    <center style={{ height: "670px",background:"linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)" }}>
+    <center
+      style={{
+        minHeight: "670px",
+      
+        background: "linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)",
+      }}
+    >
       <center>
-        {/* <p style={{ fontWeight: "bold", fontSize: "1.7em", display: "inline" }}>
-          Menu List
-        </p> */}
-        { user && user.isAdmin &&
-        // <MdAddCircle
-        //   size={30}
-        //   color="orange"
-        //   cursor="pointer"
-        //   onClick={() => setShow(true)}
-        // />
-        <button className="btn btn-success"  onClick={() => setShow(true)} style={{fontWeight:"bold",textTransform:"uppercase",margin:"15px 0px"}} >
+        {user && user.isAdmin && (
+          <button
+            className="btn btn-success"
+            onClick={() => setShow(true)}
+            style={{
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              margin: "15px 0px",
+            }}
+          >
             Add Category
-        </button>
-        }
+          </button>
+        )}
       </center>
 
       {!show && (
         <>
-        <div
-          style={{
-            // display: "flex",
-            // flexDirection: "row",
-            // flexWrap: "wrap",
-            // justifyContent: "space-evenly",
-            // alignItems: "center",
-            // fontWeight:"bold",
-         
-            // width: "60%",
-            // margin: "auto",
-            paddingTop: user && user.isAdmin?"0px":"38px"
-          }}
-        >
-          {categoriesList}
-          <br />
-        </div>
-          <hr style={{width:"35%"}} />
-        { showList&&
-        <DishesList catInfo={catInfo} user={user}/>
-        }
+          <div
+            style={{
+              paddingTop: user && user.isAdmin ? "0px" : "38px",
+            }}
+            className="cat-cont"
+          >
+            {categoriesList}
+            <br />
+          </div>
+          <hr style={{ width: "35%" }} />
+          {showList && <DishesList catInfo={catInfo} user={user} />}
         </>
       )}
-
 
       {show && (
         <center className="category-form">

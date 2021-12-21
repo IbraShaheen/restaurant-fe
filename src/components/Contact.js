@@ -95,7 +95,7 @@ const Contact = () => {
             <div className="col-8 pt-3 mx-auto">
               <button
                 type="submit"
-                className=" col-5 btn btn-dark"
+                className=" col-4 btn btn-dark"
                 
               >
                   <b>SEND</b>
